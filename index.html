@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Publisher Hub – Split Sheet Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #000; color: #fff; }
+    input, select, textarea { background-color: #2a2a2a; color: #fff; }
+    input::placeholder, textarea::placeholder { color: #bbb; }
+    .card { background-color: #1f1f1f; border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .btn { background: linear-gradient(to right, #007BFF, #1DA1F2); color: #fff; border-radius: 0.5rem; padding: 0.5rem 1rem; }
+    .btn:hover { opacity: 0.9; }
+    label { color: #fff; }
+  </style>
+</head>
+<body class="font-sans min-h-screen">
+
+  <!-- Header (kept as-is) -->
+  <header class="flex items-center p-4 border-b border-gray-800 bg-black">
+    <img src="Transparent Logo - Small.png" alt="Logo" class="h-6 w-6 mr-2">
+    <div>
+      <h1 class="text-lg font-bold">The Publisher Hub</h1>
+      <p class="text-sm text-gray-400">Everyday tasks, simplified.</p>
+    </div>
+  </header>
+
+  <!-- Work Info -->
+  <section class="card max-w-4xl mx-auto mt-6">
+    <h2 class="text-lg font-semibold mb-4">Work Information</h2>
+    <div class="grid grid-cols-2 gap-4">
+      <input class="w-full p-2 border border-gray-700 rounded" placeholder="Work Title">
+      <input class="w-full p-2 border border-gray-700 rounded" placeholder="Alt Title">
+      <input class="w-full p-2 border border-gray-700 rounded" placeholder="ISWC">
+      <select class="w-full p-2 border border-gray-700 rounded">
+        <option>English</option>
+        <option>Spanish</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Writers (renamed from Contributors & Publishers) -->
+  <section class="card max-w-4xl mx-auto mt-6">
+    <h2 class="text-lg font-semibold mb-4">Writers</h2>
+    <div id="writers-list"></div>
+    <button onclick="addWriter()" class="btn mt-2">+ Add Writer</button>
+  </section>
+
+  <!-- Recording Info (new section) -->
+  <section class="card max-w-4xl mx-auto mt-6">
+    <h2 class="text-lg font-semibold mb-4">Recording Information</h2>
+    <div class="grid grid-cols-2 gap-4">
+      <input class="w-full p-2 border border-gray-700 rounded" placeholder="Recording Title">
+      <input class="w-full p-2 border border-gray-700 rounded" placeholder="Recording Artist Name">
+      <input class="w-full p-2 border border-gray-700 rounded" placeholder="Recording Label">
+      <input class="w-full p-2 border border-gray-700 rounded" placeholder="ISRC">
+      <input class="w-full p-2 border border-gray-700 rounded" placeholder="UPC">
+      <input type="date" class="w-full p-2 border border-gray-700 rounded" placeholder="Release Date">
+    </div>
+  </section>
+
+  <script>
+    function addWriter() {
+      const card = document.createElement('div');
+      card.className = "bg-gray-800 p-4 mb-4 rounded-lg shadow";
+      card.innerHTML = `
+        <h3 class="font-medium mb-2 text-white">Writer</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="First Name">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Middle Name">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Last Name">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Writer IPI">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Writer PRO">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Writer Share %">
+        </div>
+
+        <h4 class="font-medium mt-3 mb-2 text-white">Publisher</h4>
+        <div class="grid grid-cols-2 gap-4">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Publisher Name">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Publisher PRO">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Publisher IPI">
+          <input class="w-full p-2 border border-gray-700 rounded" placeholder="Publisher Contact Email">
+        </div>
+      `;
+      document.getElementById('writers-list').appendChild(card);
+    }
+
+    // Add first writer card by default
+    addWriter();
+  </script>
+</body>
+</html>

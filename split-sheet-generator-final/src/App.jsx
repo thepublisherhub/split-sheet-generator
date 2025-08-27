@@ -1,1 +1,0 @@
-console.log('React app placeholder - full code goes here');

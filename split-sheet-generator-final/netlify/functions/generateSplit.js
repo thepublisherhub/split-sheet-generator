@@ -1,1 +1,0 @@
-console.log('Netlify Function placeholder - full code goes here');
